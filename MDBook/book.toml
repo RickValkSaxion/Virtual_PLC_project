@@ -1,0 +1,5 @@
+[book]
+authors = ["Rick Valk"]
+language = "en"
+src = "src"
+title = "Documentation virtual PLC project"
