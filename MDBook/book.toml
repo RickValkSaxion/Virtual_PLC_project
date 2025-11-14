@@ -2,4 +2,8 @@
 authors = ["Rick Valk"]
 language = "en"
 src = "src"
-title = "Documentation virtual PLC project"
+title = "Practice"
+
+[preprocessor.plantuml]
+plantuml-cmd="http://localhost:8080"
+

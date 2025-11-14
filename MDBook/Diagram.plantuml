@@ -1,0 +1,3 @@
+@startuml
+Bert -> Ernie : Hey Ernie
+@enduml
