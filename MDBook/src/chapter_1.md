@@ -26,7 +26,7 @@ klm -> klm : Slaat deze keuze op in wachtrij
 kwm -> klm : Doe de kleuren in de pot
 klm -> klm : Doet kleuren in de pot
 klm -> kwm : Ik ben klaar, haal de pot weg
-kwm -> klm : Ik haal de pot weg
+kwm -> klm : OK, ik haal de pot weg
 kwm -> sdm : Schud deze pot
 sdm -> sdm : Schud de pot
 sdm -> kwm : Ik ben klaar
