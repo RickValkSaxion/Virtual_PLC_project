@@ -2,7 +2,7 @@
 authors = ["Rick Valk"]
 language = "en"
 src = "src"
-title = "Practice"
+title = "Documentation for Process and Safety individual assignment"
 
 [preprocessor.plantuml]
 plantuml-cmd="http://localhost:8080"
