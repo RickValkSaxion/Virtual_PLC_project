@@ -3,7 +3,7 @@
   <GVL Name="GVL" Id="{ad7c7aee-8066-4b1e-a7a7-313bc232cde0}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
-	global_counter : INT := 0;
+	tekst
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

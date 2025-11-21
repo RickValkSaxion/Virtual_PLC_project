@@ -3,15 +3,13 @@
   <POU Name="MAIN" Id="{37e4aa0d-7777-400c-a8ca-388435fd5c5b}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	counter : INT := 0;
+	int;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[counter := counter + 1;
-GVL.global_counter := GVL.global_counter + 1;]]></ST>
+      <ST><![CDATA[tekst en nog wat tekst]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="7" Count="0" />
       <LineId Id="12" Count="0" />
     </LineIds>
   </POU>
