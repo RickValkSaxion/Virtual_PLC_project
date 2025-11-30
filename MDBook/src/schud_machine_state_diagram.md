@@ -16,6 +16,7 @@ state AutoMode {
   Idle --> ClampingCan : Door closed
   ClampingCan --> ShakingCan : Can clamped
   ClampingCan --> Idle : Stop pressed
+  ClampingCan --> Idle : No can found
   ShakingCan --> Idle : Stop pressed
   ShakingCan --> Idle : Time elapsed
 }
