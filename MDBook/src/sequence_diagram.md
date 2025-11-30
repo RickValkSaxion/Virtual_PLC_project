@@ -27,6 +27,7 @@ kwm -> klt : Welke kleur verf?
 klt -> klt : Kiest kleur verf
 klt -> kwm : Ik wil kleurcode xx.yy.zz
 kwm -> klt : Hoe veel liter?
+klt -> klt : Kiest hoeveel liter
 klt -> kwm : Ik wil 2,5 liter
 deactivate klt
 kwm -> klm : Klant wilt karwei muurverf \nmet kleurcode xx.yy.zz
