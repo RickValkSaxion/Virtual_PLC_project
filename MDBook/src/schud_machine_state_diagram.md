@@ -9,12 +9,18 @@ hide empty description
 'state timeJoin <<join>>
 
 [*] --> Startup : Power on
-Startup --> AutoMode
-AutoMode --> FindingCan : door closed
+Startup --> AutoMode : Startup done
 
-FindingCan --> Shaking1min : Can found
-Shaking1min --> AutoMode : 1 min passed
-Shaking1min --> AutoMode : Stop pressed
+state AutoMode {
+  [*] --> Idle
+  Idle --> ClampingCan : Door closed
+  ClampingCan --> ShakingCan : Can clamped
+  ClampingCan --> Idle : Stop pressed
+  ShakingCan --> Idle : Stop pressed
+  ShakingCan --> Idle : Time elapsed
+}
+
+AutoMode --> [*] : Power off
 
 'FindingCan --> Shaking1min30 : Medium can found
 'Shaking1min30 --> timeJoin : 1 min 30 passed
@@ -32,5 +38,18 @@ Shaking1min --> AutoMode : Stop pressed
 'TimeMode -> AutoMode : Mode Button
 @enduml
 
+```
+
+```plantuml
+@startuml
+state AutoMode {
+  [*] --> Idle
+  Idle --> ClampingCan : Door closed
+  ClampingCan --> ShakingCan : Can clamped
+  ClampingCan --> Idle : Stop pressed
+  ShakingCan --> Idle : Stop pressed
+  ShakingCan --> Idle : Time elapsed
+}
+@enduml
 ```
 
