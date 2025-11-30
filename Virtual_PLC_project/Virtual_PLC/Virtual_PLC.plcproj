@@ -18,6 +18,12 @@
     <LibraryReferences>{654f595b-393c-4e46-bdaf-429377100e3e}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DUTs\KleurmachineToestand.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\MedewerkerToestand.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\schudmachineToestand.TcDUT">
       <SubType>Code</SubType>
     </Compile>

@@ -4,15 +4,26 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	// Keuzes van de klant
-	typeVerf 	: STRING;
-	merkVerf 	: STRING;
-	kleurVerf	: STRING;
+	typeVerf 	: STRING := 'null';
+	merkVerf 	: STRING := 'null';
+	kleurVerf	: STRING := 'null';
+	hoeveelVerf : STRING := 'null';
 	
 	// Opdracht voor kleurmachine
-	verfOrder 	: ARRAY[0..2] OF STRING;
+	verfOrder 	: ARRAY[1..4] OF STRING;
 	
+	// knoppen/sensoren kleurmachine
+	homeKnop : BOOL;
+	okeKnop : BOOL;
+	blikPresent : BOOL;
+	opdrachtKnop : BOOL;
+	startKnop : BOOL;	
 	
+	barcodeBlik : INT;
 	
+	klantWiltVerf : BOOL;
+	klantWacht : BOOL;
+	verfAanKlantGegeven : BOOL;
 	
 END_VAR]]></Declaration>
   </GVL>

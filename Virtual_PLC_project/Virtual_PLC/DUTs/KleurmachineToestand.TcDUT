@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <DUT Name="KleurmachineToestand" Id="{5a1a2972-58b5-4eb7-8789-febbb6344c88}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE KleurmachineToestand :
+(
+	startup := 0,
+	home,
+	info,
+	scan,
+	wachtOpBlik,
+	kleurToevoegen,
+	klaarMetToevoegen
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

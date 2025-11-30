@@ -3,13 +3,82 @@
   <POU Name="kleurmachine" Id="{e2f2c538-0dc9-411e-a330-8428cfac9392}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM kleurmachine
 VAR
+	state : KleurmachineToestand;
+	
+	
+	kleurmachineReady : BOOL;
+	kleurmachineBezig : BOOL;
+	
+	inputCode : INT;
+	goedeCode : INT := 1234;
+	
+	kleurmachineTimer : TON;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[CASE state OF
+	KleurmachineToestand.startup:
+		// Simulate startup
+		kleurmachineTimer(IN:=TRUE, PT:=T#10S);
+		IF kleurmachineTimer.Q THEN
+			kleurmachineTimer(IN:=FALSE);
+			state := KleurmachineToestand.home;
+		END_IF
+		
+	KleurmachineToestand.home:
+		kleurmachineReady := TRUE;
+		kleurmachineBezig := FALSE;
+		IF GVL.opdrachtKnop THEN
+			state := KleurmachineToestand.info;
+		END_IF
+		
+	KleurmachineToestand.info:
+		IF GVL.startKnop THEN
+			state := KleurmachineToestand.scan;
+		END_IF
+		
+	KleurmachineToestand.scan:
+		kleurmachineReady := FALSE;
+		kleurmachineBezig := TRUE;
+		IF GVL.barcodeBlik = goedeCode THEN
+			state := KleurmachineToestand.wachtOpBlik;
+		END_IF
+		
+	KleurmachineToestand.wachtOpBlik:
+		IF GVL.blikPresent OR GVL.okeKnop THEN
+			state := KleurmachineToestand.kleurToevoegen;
+		END_IF
+		
+	KleurmachineToestand.kleurToevoegen:
+		kleurmachineTimer(IN:=TRUE,PT:=T#20S); // simulate the colors being added
+		IF kleurmachineTimer.Q THEN
+			state := KleurmachineToestand.klaarMetToevoegen;
+		END_IF
+		
+	KleurmachineToestand.klaarMetToevoegen:
+		IF GVL.okeKnop OR NOT GVL.blikPresent THEN
+			state := KleurmachineToestand.home;	
+		END_IF
+END_CASE]]></ST>
     </Implementation>
     <LineIds Name="kleurmachine">
       <LineId Id="5" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="25" Count="1" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="29" Count="1" />
+      <LineId Id="33" Count="1" />
+      <LineId Id="77" Count="1" />
+      <LineId Id="35" Count="9" />
+      <LineId Id="74" Count="0" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="45" Count="2" />
+      <LineId Id="52" Count="4" />
+      <LineId Id="58" Count="1" />
+      <LineId Id="62" Count="0" />
+      <LineId Id="64" Count="7" />
+      <LineId Id="24" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
