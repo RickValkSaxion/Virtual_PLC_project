@@ -1,6 +1,8 @@
 # Sequence diagram
 
-Hieronder is een sequence 
+Als routine voor deze opdracht heb ik verfmengen bij de Karwei gekozen, sinds ik werk bij de Karwei en ik dit elke week doe.
+
+Hieronder is een sequence diagram te zien waar de communicatie tussen de actors, de klant en de medewerker, en de machines te zien is.
 
 ```plantuml
 @startuml
@@ -29,6 +31,8 @@ kwm -> klm : Klant wilt karwei muurverf \nmet kleurcode xx.yy.zz
 activate klm
 klm -> klm : Slaat deze keuze op in wachtrij
 kwm -> klm : Doe de kleuren in de pot
+klm -> kwm : Heb je wel de goede pot gepakt?
+kwm -> klm : Ja, dit is de barcode: ...
 klm -> klm : Doet kleuren in de pot
 klm -> kwm : Ik ben klaar, haal de pot weg
 kwm -> klm : OK, ik haal de pot weg
