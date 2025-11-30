@@ -39,17 +39,3 @@ AutoMode --> [*] : Power off
 @enduml
 
 ```
-
-```plantuml
-@startuml
-state AutoMode {
-  [*] --> Idle
-  Idle --> ClampingCan : Door closed
-  ClampingCan --> ShakingCan : Can clamped
-  ClampingCan --> Idle : Stop pressed
-  ShakingCan --> Idle : Stop pressed
-  ShakingCan --> Idle : Time elapsed
-}
-@enduml
-```
-
