@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.65">
-	<Project ProjectGUID="{CC0BDDB8-5755-447D-B894-17F85397FBD8}" TargetNetId="39.231.85.117.1.1" Target64Bit="true" ShowHideConfigurations="#x6">
+	<Project ProjectGUID="{CC0BDDB8-5755-447D-B894-17F85397FBD8}" TargetNetId="39.231.85.117.1.1" Target64Bit="true" ShowHideConfigurations="#x3c7">
 		<System>
 			<Tasks>
 				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
@@ -10,7 +10,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{AC5E423B-7041-4DD0-84E0-A39DAF6982CC}" Name="Virtual_PLC" PrjFilePath="Virtual_PLC\Virtual_PLC.plcproj" TmcFilePath="Virtual_PLC\Virtual_PLC.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Virtual_PLC\Virtual_PLC.tmc" TmcHash="{80B0AD2B-29E6-AF6B-560D-F57D89328B76}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Virtual_PLC\Virtual_PLC.tmc" TmcHash="{CA6C4B8E-CE24-E767-4463-91499CCCCEAB}">
 					<Name>Virtual_PLC Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>
