@@ -1,15 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
-  <DUT Name="MedewerkerToestand" Id="{5bbf5d48-5f6e-4895-b267-cd102d6f9319}">
+  <DUT Name="KlantToestand" Id="{55f94cf3-191f-43b4-aa73-bae45694b309}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 {attribute 'strict'}
-TYPE MedewerkerToestand :
+TYPE KlantToestand :
 (
-	wachtenOpKlant := 0,
-	klantHelpen,
-	verfMengen,
-	verfSchudden,
-	verfGeven
+	voorBalie := 0,
+	wordtGeholpen,
+	aanHetWachten,
+	heeftVerf
 );
 END_TYPE
 ]]></Declaration>

@@ -13,9 +13,13 @@ END_VAR
     <Implementation>
       <ST><![CDATA[CASE state OF
 	MedewerkerToestand.wachtenOpKlant:
-		// CODE
+		IF GVL.klantWiltVerf THEN
+			state := MedewerkerToestand.klantHelpen;
+		END_IF
+		
 	MedewerkerToestand.klantHelpen:
-		// CODE
+		// get order from customer
+		GVL.klantWordtGeholpen := TRUE;
 		GVL.verfOrder[1] := GVL.merkVerf;
 		GVL.verfOrder[2] := GVL.kleurVerf;
 		GVL.verfOrder[3] := GVL.typeVerf;
@@ -26,6 +30,7 @@ END_VAR
 		END_IF
 		
 	MedewerkerToestand.verfMengen:
+		GVL.klantWacht := TRUE;
 		medewerkerTimer(IN:= TRUE, PT:= T#7S); // Simulate the time it takes to click all buttons until scanning barcode
 		// Blik onder kleurmachine zetten
 		GVL.blikPresent := TRUE;
@@ -40,16 +45,27 @@ END_VAR
 			IF kleurmachine.state = kleurmachineToestand.klaarMetToevoegen THEN
 				GVL.blikPresent := FALSE;
 				medewerkerTimer(IN:=FALSE);
-				state := MedewerkerToestand.verfGeven;
+				state := MedewerkerToestand.verfSchudden;
 			END_IF
 			
 		END_IF
 		
+	MedewerkerToestand.verfSchudden:
+		medewerkerTimer(IN:= TRUE, PT:= T#1S);
+		IF NOT medewerkerTimer.Q THEN
+			GVL.deurDicht := TRUE;
+		ELSIF medewerkerTimer.Q AND NOT GVL.deurDicht THEN
+			medewerkerTimer(IN:= FALSE);
+			state := medewerkerToestand.verfGeven;
+		END_IF
+		
 	MedewerkerToestand.verfGeven:
+		GVL.klantWacht := FALSE;
 		medewerkerTimer(IN:= TRUE, PT:= T#5S); // simulate giving can to customer
 		IF medewerkerTimer.Q THEN
 			GVL.verfAanKlantGegeven := TRUE;
 			state := MedewerkerToestand.wachtenOpKlant;
+			GVL.klantWordtGeholpen := FALSE;
 		END_IF
 		
 		
@@ -58,12 +74,16 @@ END_CASE
     </Implementation>
     <LineIds Name="Medewerker">
       <LineId Id="27" Count="1" />
-      <LineId Id="30" Count="2" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="85" Count="2" />
+      <LineId Id="31" Count="1" />
+      <LineId Id="80" Count="0" />
       <LineId Id="39" Count="3" />
       <LineId Id="37" Count="0" />
       <LineId Id="44" Count="2" />
       <LineId Id="79" Count="0" />
       <LineId Id="33" Count="0" />
+      <LineId Id="83" Count="0" />
       <LineId Id="56" Count="0" />
       <LineId Id="34" Count="0" />
       <LineId Id="51" Count="0" />
@@ -77,11 +97,20 @@ END_CASE
       <LineId Id="69" Count="1" />
       <LineId Id="64" Count="0" />
       <LineId Id="62" Count="0" />
+      <LineId Id="88" Count="4" />
+      <LineId Id="94" Count="0" />
+      <LineId Id="96" Count="0" />
+      <LineId Id="95" Count="0" />
+      <LineId Id="93" Count="0" />
       <LineId Id="50" Count="0" />
-      <LineId Id="35" Count="1" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="84" Count="0" />
+      <LineId Id="36" Count="0" />
       <LineId Id="75" Count="0" />
       <LineId Id="78" Count="0" />
-      <LineId Id="76" Count="1" />
+      <LineId Id="76" Count="0" />
+      <LineId Id="81" Count="0" />
+      <LineId Id="77" Count="0" />
       <LineId Id="72" Count="1" />
       <LineId Id="29" Count="0" />
       <LineId Id="25" Count="0" />

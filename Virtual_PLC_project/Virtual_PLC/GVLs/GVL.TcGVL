@@ -21,10 +21,17 @@ VAR_GLOBAL
 	
 	barcodeBlik : INT;
 	
-	klantWiltVerf : BOOL;
+	// klant variabelen
+	klantWiltVerf : BOOL := TRUE;
+	klantWordtGeholpen : BOOL;
 	klantWacht : BOOL;
 	verfAanKlantGegeven : BOOL;
 	
+	// schudmachine variabelen
+	schudmachineReady : BOOL := FALSE;
+	schudMachineBezig : BOOL := FALSE;
+	deurDicht : BOOL := FALSE;
+	stopSchudden : BOOL := FALSE;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

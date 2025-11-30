@@ -3,13 +3,38 @@
   <POU Name="Klant" Id="{83c63601-1ba3-4a51-a444-c63301a380d8}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM Klant
 VAR
+	state : KlantToestand;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[CASE state OF
+	KlantToestand.voorBalie:
+		IF GVL.klantWordtGeholpen THEN
+			state := klantToestand.wordtGeholpen;
+		END_IF
+		
+	KlantToestand.wordtGeholpen:
+		IF GVL.klantWacht THEN
+			state := KlantToestand.aanHetWachten;
+		END_IF
+		
+	KlantToestand.aanHetWachten:
+		IF GVL.verfAanKlantGegeven THEN
+			state := KlantToestand.heeftVerf;
+		END_IF
+		
+	KlantToestand.heeftVerf:
+		GVL.klantWiltVerf := FALSE;
+END_CASE]]></ST>
     </Implementation>
     <LineIds Name="Klant">
       <LineId Id="5" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="13" Count="2" />
+      <LineId Id="18" Count="4" />
+      <LineId Id="24" Count="4" />
+      <LineId Id="32" Count="2" />
+      <LineId Id="11" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

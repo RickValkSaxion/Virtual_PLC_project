@@ -56,6 +56,21 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"927"</v>
+              <v n="TextDefault">"Klant aan het wachten"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"471"</v>
+              <v n="TextDefault">"Klant heeft verf"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"542"</v>
+              <v n="TextDefault">"Klant voor balie"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"729"</v>
               <v n="TextDefault">"Kleurmachine bezig"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -63,6 +78,11 @@
             <o>
               <v n="TextID">"155"</v>
               <v n="TextDefault">"Kleurmachine ready"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"838"</v>
+              <v n="TextDefault">"Label"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -98,6 +118,11 @@
             <o>
               <v n="TextID">"909"</v>
               <v n="TextDefault">"Stop schudden"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"825"</v>
+              <v n="TextDefault">"Verstuur order"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>

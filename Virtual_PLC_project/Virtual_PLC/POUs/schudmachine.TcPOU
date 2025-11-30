@@ -4,10 +4,7 @@
     <Declaration><![CDATA[PROGRAM schudmachine
 VAR
 	State : schudmachineToestand;
-	schudmachineReady : BOOL := FALSE;
-	schudMachineBezig : BOOL := FALSE;
-	deurDicht : BOOL := FALSE;
-	stopSchudden : BOOL := FALSE;
+	
 	blikGevonden : BOOL := FALSE;
 	geenBlikGevonden : BOOL;
 	//fBlikKlemmen : BlikKlemmen;
@@ -30,16 +27,16 @@ END_VAR
 		
 	schudMachineToestand.automode:
 		// CODE
-		schudmachineReady := TRUE;
-		schudmachineBezig := FALSE;
-		IF deurDicht THEN
+		GVL.schudmachineReady := TRUE;
+		GVL.schudmachineBezig := FALSE;
+		IF GVL.deurDicht THEN
 			State := schudmachineToestand.blikKlemmen;
 		END_IF
 
 	schudMachineToestand.blikKlemmen:
 		// CODE
-		schudmachineReady := FALSE;
-		schudmachineBezig := TRUE;
+		GVL.schudmachineReady := FALSE;
+		GVL.schudmachineBezig := TRUE;
 		
 		// clamping procedure
 		klemTimer(IN:=TRUE, PT:= T#10S);
@@ -53,12 +50,12 @@ END_VAR
 		// checks to change state
 		IF blikGevonden THEN
 			State := schudmachineToestand.blikSchudden;
-		ELSIF stopSchudden THEN
+		ELSIF GVL.stopSchudden THEN
 			State := schudmachineToestand.automode;
-			deurDicht := FALSE;
+			GVL.deurDicht := FALSE;
 		ELSIF geenBlik THEN
 			State := schudmachineToestand.automode;
-			deurDicht := FALSE;
+			GVL.deurDicht := FALSE;
 		END_IF
 		
 	schudMachineToestand.blikSchudden:
@@ -66,10 +63,10 @@ END_VAR
 		timerSchudMachine(IN:=TRUE, PT:= T#1M);
 		IF timerSchudMachine.Q THEN
 			State := schudmachineToestand.automode;
-			deurDicht := FALSE;
-		ELSIF stopSchudden THEN
+			GVL.deurDicht := FALSE;
+		ELSIF GVL.stopSchudden THEN
 			State := schudmachineToestand.automode;
-			deurDicht := FALSE;
+			GVL.deurDicht := FALSE;
 		END_IF
 	
 END_CASE]]></ST>

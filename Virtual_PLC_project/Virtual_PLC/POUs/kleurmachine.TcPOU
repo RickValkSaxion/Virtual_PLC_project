@@ -50,7 +50,14 @@ END_VAR
 		END_IF
 		
 	KleurmachineToestand.kleurToevoegen:
-		kleurmachineTimer(IN:=TRUE,PT:=T#20S); // simulate the colors being added
+		IF GVL.verfOrder[4] = '2.5' THEN
+			kleurmachineTimer(IN:=TRUE,PT:=T#20S); // simulate the colors being added
+		ELSIF GVL.verfOrder[4] = '5' THEN
+			kleurmachineTimer(IN:=TRUE,PT:=T#30S); // simulate the colors being added
+		ELSIF GVL.verfOrder[4] = '10' THEN
+			kleurmachineTimer(IN:=TRUE,PT:=T#40S); // simulate the colors being added
+		END_IF
+		
 		IF kleurmachineTimer.Q THEN
 			state := KleurmachineToestand.klaarMetToevoegen;
 		END_IF
@@ -76,6 +83,9 @@ END_CASE]]></ST>
       <LineId Id="45" Count="2" />
       <LineId Id="52" Count="4" />
       <LineId Id="58" Count="1" />
+      <LineId Id="80" Count="1" />
+      <LineId Id="83" Count="3" />
+      <LineId Id="82" Count="0" />
       <LineId Id="62" Count="0" />
       <LineId Id="64" Count="7" />
       <LineId Id="24" Count="0" />
